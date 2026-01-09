@@ -6,7 +6,7 @@ class TasksController < ApplicationController
 
   # editアクション  タスク編集画面表示
   def edit
-    @task =Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   # updateアクション  タスク更新
