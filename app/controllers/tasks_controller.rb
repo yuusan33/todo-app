@@ -17,8 +17,6 @@ class TasksController < ApplicationController
     else
       render :edit
     end
-  rescue ActiveRecord::RecordNotFound
-    redirect_to tasks_path, alert: 'タスクが見つかりません'
   end
 
   private
