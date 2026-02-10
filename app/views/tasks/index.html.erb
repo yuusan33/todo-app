@@ -5,7 +5,7 @@
     </div>
     <div>
       <!-- routes currently expose only index; keep action button disabled for now -->
-      <button class="btn btn-primary" disabled>タスクの追加</button>
+      <%= link_to "タスクの追加", new_task_path,  class: 'btn btn-sm btn-outline-primary' %>
     </div>
   </div>
 

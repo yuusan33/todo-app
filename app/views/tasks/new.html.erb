@@ -1,0 +1,21 @@
+<div style="display:flex; align-items:flex-start; justify-content:center; min-height:100vh; padding:8vh 1rem 1rem;">
+    <div style="width:100%; max-width:480px;">
+        <%= form_with model: @task, local: true do |f| %>
+            <% if @task.errors.any? %>
+                <div class="errors">
+                <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+                <ul>
+                    <% @task.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                </ul>
+                </div>
+            <% end %>
+
+            <div class="input-group mb-3">
+                <%= f.text_field :title, class: "form-control", placeholder: "タスクを追加", aria: { label: "add_task" }, "aria-describedby": "button-addon2" %>
+                <%= f.submit '作成', class: "btn btn-outline-secondary", id: "button-addon2" %>
+            </div>
+        <% end %>
+    </div>
+</div>
