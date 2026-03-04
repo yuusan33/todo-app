@@ -4,6 +4,21 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  # newアクション　タスク新規画面表示
+  def new
+    @task = Task.new
+  end
+
+  # createアクション　タスク新規作成
+  def create
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to root_path, notice: 'タスクを作成しました'
+    else
+      render :new
+    end
+  end
+
   # editアクション  タスク編集画面表示
   def edit
     @task = Task.find(params[:id])
