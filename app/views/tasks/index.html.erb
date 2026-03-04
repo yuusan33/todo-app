@@ -1,0 +1,46 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <h1 class="mb-0">To Do</h1>
+    </div>
+    <div>
+      <!-- routes currently expose only index; keep action button disabled for now -->
+      <button class="btn btn-primary" disabled>タスクの追加</button>
+    </div>
+  </div>
+
+  <% if flash.any? %>
+    <% flash.each do |type, message| %>
+      <% bs_class = case type.to_sym
+        when :notice then 'success'
+        when :alert then 'danger'
+        else 'info'
+      end %>
+      <div class="alert alert-<%= bs_class %> alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if @tasks.any? %>
+    <div class="row row-cols-1 g-3">
+      <% @tasks.each do |task| %>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= task.title %></h5>
+              <%= link_to '編集', edit_task_path(task), class: 'btn btn-sm btn-outline-primary' %>
+              <p class="card-text text-muted mb-1"><small>作成日: <%= task.created_at.strftime("%Y-%m-%d %H:%M") %></small></p>
+              <p class="card-text text-muted mb-0"><small>更新日: <%= task.updated_at.strftime("%Y-%m-%d %H:%M") %></small></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-secondary" role="alert">
+      まだタスクがありません。タスクを追加する。
+    </div>
+  <% end %>
+</div>
