@@ -16,6 +16,12 @@
                 <%= f.text_field :title, class: "form-control", placeholder: "タスクを追加", aria: { label: "add_task" }, "aria-describedby": "button-addon2" %>
                 <%= f.submit '作成', class: "btn btn-outline-secondary", id: "button-addon2" %>
             </div>
+
+            <!-- 期限入力を追加 -->
+            <div class="input-group mb-3">
+                <%= f.label :deadline, "期限", class: "input-group-text" %>
+                <%= f.date_field :deadline, class: "form-control", placeholder: "YYYY-MM-DD", aria: { label: "deadline" } %>
+            </div>
         <% end %>
     </div>
 </div>
